@@ -86,7 +86,7 @@
                   <div
                     v-for="(s, index) in picture(taget.images,'#')"
                     :key="index"
-                    @click="addimages(picture(taget.images), index)"
+                    @click="addimages(picture(taget.images,'#'), index)"
                     class="grid-img"
                   >
                     <van-image
@@ -153,19 +153,6 @@ export default {
     console.log("已销毁");
   },
   methods: {
-    cuttext(str) {
-      //切割字符串
-      let newtext = str.split("\n");
-      //按照#号分割字符串
-      for (var i = 0; i < newtext.length; i++) {
-        if (newtext[i] == undefined || newtext[i] == "") {
-          newtext.splice(i, 1);
-          i = i - 1; // i - 1 ,因为空元素在数组下标 2 位置，删除空之后，后面的元素要向前补位，
-          // 这样才能真正去掉空元素,觉得这句可以删掉的连续为空试试，然后思考其中逻辑
-        }
-        return newtext;
-      }
-    },
 
     computedTxt(str) {
       //页面最多显示190个字剩下的会不展示

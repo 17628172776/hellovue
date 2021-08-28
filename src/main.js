@@ -6,13 +6,39 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 //引入路由器
 import router from './router'
-import { Col, Row, Button,Tabbar, TabbarItem,NavBar,List,Cell,Search,Sticky,
-     Image as VanImage,Lazyload,Icon,Divider,Form,Field,CellGroup, DropdownMenu, 
-     DropdownItem ,Switch,Uploader,PullRefresh,ShareSheet,Popup,Tag,Overlay,Dialog
-    } from 'vant';
+import {
+    Col,
+    Row,
+    Button,
+    Tabbar,
+    TabbarItem,
+    NavBar,
+    List,
+    Cell,
+    Search,
+    Sticky,
+    Image as VanImage,
+    Lazyload,
+    Icon,
+    Divider,
+    Form,
+    Field,
+    CellGroup,
+    DropdownMenu,
+    DropdownItem,
+    Switch,
+    Uploader,
+    PullRefresh,
+    ShareSheet,
+    Popup,
+    Tag,
+    Overlay,
+    Dialog
+} from 'vant';
 import { vueBaberrage } from 'vue-baberrage'
 import 'vant/lib/index.css';
 import axios from 'axios'
+import VueQr from "vue-qr"; //二维码生成的插件
 Vue.prototype.$axios = axios
 
 
@@ -45,18 +71,21 @@ Vue.use(Tag);
 Vue.use(Overlay);
 Vue.use(Dialog);
 
+//引入qr
+Vue.use(VueQr);
+
 //引入vueBaberrage
 Vue.use(vueBaberrage);
 //关闭vue的生产提示
 Vue.config.productionTip = false
 Vue.use(VueRouter)
-//创建vue
+    //创建vue
 new Vue({
     el: '#app',
     router: router,
     render: h => h(App),
-    beforeCreate(){
-        Vue.prototype.$bus = this  //安装全局事件总线
+    beforeCreate() {
+        Vue.prototype.$bus = this //安装全局事件总线
     },
 
 })

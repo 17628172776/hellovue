@@ -4,6 +4,7 @@
     <div class="box" v-show="isopen" @click="isopen = false">
       <div class="left"></div>
       <div class="right"></div>
+      <p class="titletext">点我表白!</p>
     </div>
 
     <div v-show="!isopen" class="max-box">
@@ -92,6 +93,7 @@
           placeholder="请输入类容"
           show-word-limit
           :formatter="checkText"
+          format-trigger="onBlur"
         />
       </div>
       <div class="mini-box">
@@ -192,7 +194,7 @@ export default {
     },
     checkText(value) {
       //过滤数据 过滤单引号 输入前格式  用于表白类容
-      return value.replace(/'"/g, "");
+      return value.replace(/[:#/'"]/g, "");
     },
 
     onSubmit() {
@@ -270,7 +272,6 @@ export default {
   margin-top: 60px;
   margin-bottom: 50px;
   background-color: #f7f7f7;
-  
 }
 .mini-box {
   background: linear-gradient(to right, #ece8e8, #f7ecee, #f7f2f1, #faf7f6);
@@ -306,7 +307,6 @@ export default {
   margin-right: auto;
   animation: move 0.3s infinite alternate;
 
-
   /*动画名称 运动时间 运动次数infinite表示无限次 alternate往返效果相同*/
 }
 @keyframes move {
@@ -318,12 +318,12 @@ export default {
 .box .right {
   width: 130px;
   height: 200px;
-  background-color: rgb(247, 165, 165);
+  background-color: #f7c7d3;
   border-radius: 75px 75px 0 0;
   float: left;
   position: relative; /*相对大div定位*/
   left: 31%;
-  
+
   /* box-shadow: 0 0 40px rgb(231, 208, 208); 设置阴影效果，其值分别表示水平偏移量，竖直偏移量，阴影大小，颜色 */
 }
 .box .left {
@@ -332,5 +332,13 @@ export default {
 .box .right {
   transform: rotate(-45deg);
   margin-left: -181px;
+}
+.titletext {
+  position: relative;
+  font-size: 2em;
+  width: 40vw;
+  text-shadow: 1px 2px 1px #f7c7d3;
+  color: #ece8e8;
+  margin-left: 3vw;
 }
 </style>

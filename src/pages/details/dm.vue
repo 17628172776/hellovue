@@ -11,12 +11,24 @@
     </vue-baberrage> -->
 
     <!-- 测试 -->
+
+    <div class="isswitch">
+      <van-switch
+        v-model="barrageIsShow"
+        size="20"
+        active-color="#B9A9CD"
+        inactive-color="#EDE8F5"
+      >
+      </van-switch>
+    </div>
+
     <div class="barrages-drop">
       <vue-baberrage
         :isShow="barrageIsShow"
         :barrageList="barrageList"
         :loop="barrageLoop"
         extraWidth="90"
+        
       >
       </vue-baberrage>
     </div>
@@ -58,10 +70,10 @@ export default {
     addToLists() {
       this.commentList.forEach((a) => {
         this.barrageList.push({
-          barrageStyle: "a" + Math.floor(Math.random() * 4), //这里是自定义样式
           id: a.id,
           avatar: this.imgUrl8,
           time: Math.floor(Math.random() * 5 + 5),
+          barrageStyle: "a" + Math.floor(Math.random() * 4), //这里是自定义样式
           msg: a.contents,
           type: MESSAGE_TYPE.NORMAL,
         });
@@ -94,12 +106,17 @@ export default {
     color: #fff;
   }
   .baberrage-stage {
-    position: absolute;
+    position: fixed;
+    margin-top: 10px;
     width: 99vw;
-    height: 99vh;
+    height: 97vh;
     // overflow: hidden;
     bottom: 0;
-    margin-top: 130px;
   }
+}
+.isswitch {
+  position: fixed;
+  top: 0px;
+  left: 10px;
 }
 </style>
